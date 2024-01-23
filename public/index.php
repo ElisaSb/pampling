@@ -1,11 +1,9 @@
-<!DOCTYPE HTML>
-<html>
-    <head>
-        <meta charset="utf-8"/>
-        <title>Inicio</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    </head>
-    <body>
-        <h1>Hola, Mundo!</h1>
-    </body>
-</html>
+<?php
+
+use App\Kernel;
+
+require_once dirname(__DIR__).'/vendor/autoload_runtime.php';
+
+return function (array $context) {
+    return new Kernel($context['APP_ENV'], (bool) $context['APP_DEBUG']);
+};
