@@ -8,13 +8,13 @@ Para arrancar el proyecto, seguid los siguientes pasos:
 ```console
 $ sudo apt install make
 ```
-
+* Copiar y pega en la misma ruta (raíz del proyecto) el archivo "docker-compose.yml.dist" y nombralo sin el ".dist". Se quedaría de la siguiente manera:
+  * docker-compose.yml
 * Lanzar los siguientes comandos dentro de la raíz del proyecto:
 ```console
 $ make build
 $ make install
 $ make ssh-be
-$ composer install
 $ php bin/console doctrine:migrations:migrate
 ```
 * Al acceder desde un navegador a "http://127.0.7.14" podremos ver el mensaje --> "Hola, Mundo!" en la pantalla.
