@@ -12,15 +12,17 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
 
+    App\Listener\JsonExceptionResponseTransformerListener:
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception, method: onKernelException, priority: 100 }
+
     App\Controller\UserController:
-        arguments: ['@user.repository.adapter']
+        arguments: ['@user.repository.adapter', '@user.service']
 
     user.repository.adapter:
         class: App\Repository\UserRepositoryAdapter
         arguments: ['@doctrine.orm.entity_manager']
 
-    user.not_found.exception_listener:
-        class: App\Listener\UserNotFoundExceptionListener
-        arguments: [ "@twig" ]
-        tags:
-            - { name: kernel.event_listener, event: kernel.exception, method: onKernelException }
+    user.service:
+        class: App\Service\User\UserService
+        arguments: ['@user.repository.adapter']

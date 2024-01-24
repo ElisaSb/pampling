@@ -62,6 +62,10 @@ class User
 
     public function setEmail(string $email): self
     {
+        if (!\filter_var($email, \FILTER_VALIDATE_EMAIL)) {
+            throw new \LogicException('Invalid email.');
+        }
+
         $this->email = $email;
 
         return $this;
@@ -70,5 +74,15 @@ class User
     public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->createdAt;
+    }
+
+    public function getDataResponse(): array
+    {
+        return [
+            "id" => $this->id,
+            "name" => $this->name,
+            "email" => $this->email,
+            "createdAt" => $this->createdAt,
+        ];
     }
 }
