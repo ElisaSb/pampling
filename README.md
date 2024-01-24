@@ -13,6 +13,9 @@ $ sudo apt install make
 ```console
 $ make build
 $ make install
+$ make ssh-be
+$ composer install
+$ php bin/console doctrine:migrations:migrate
 ```
 * Al acceder desde un navegador a "http://127.0.7.14" podremos ver el mensaje --> "Hola, Mundo!" en la pantalla.
 
@@ -25,5 +28,5 @@ Las características de la prueba son las siguientes:
 * Se encuentra configurada con Docker.
 * PHP: 7.4
 * Symfony: 5
-* Linux : Usually make command is installed, To install it, you can do it from the repositories (sudo apt install make or similar)
-
+* Para acceder a la documentación del proyecto, haga clic [aquí](http://127.0.7.14/api/doc).
+  * Las rutas de la api RESTful son las que se encuentran separadas por el tag "api user".
