@@ -17,7 +17,10 @@ services:
             - { name: kernel.event_listener, event: kernel.exception, method: onKernelException, priority: 100 }
 
     App\Controller\UserController:
-        arguments: ['@user.repository.adapter', '@user.service']
+        arguments: ['@user.repository.adapter']
+
+    App\Controller\ApiUserController:
+        arguments: ['@user.service']
 
     user.repository.adapter:
         class: App\Repository\UserRepositoryAdapter

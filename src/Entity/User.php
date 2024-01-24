@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity
@@ -15,21 +16,25 @@ class User
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Groups({"read", "create", "update"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Groups({"read", "create", "update"})
      */
     private $email;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"read"})
      */
     private $createdAt;
 

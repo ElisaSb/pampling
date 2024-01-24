@@ -1,0 +1,18 @@
+nelmio_api_doc:
+    documentation:
+        servers:
+            - url: http://127.0.7.14/
+              description: API user
+        info:
+            title: PAMPLING TEST
+            description: Prueba Pampling
+            version: 1.0.0
+        components:
+            securitySchemes:
+                Bearer:
+                    type: http
+                    scheme: bearer
+                    bearerFormat: JWT
+        security:
+            - Bearer: []
+    use_validation_groups: true
