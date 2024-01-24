@@ -1,18 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}User index{% endblock %}
+{% block title %}Lista de usuarios{% endblock %}
 
 {% block body %}
-    <h1>User index</h1>
+    <h1>Lista de usuarios</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Name</th>
+                <th>Nombre</th>
                 <th>Email</th>
-                <th>CreatedAt</th>
-                <th>actions</th>
+                <th>Fecha de creación</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -23,17 +23,17 @@
                 <td>{{ user.email }}</td>
                 <td>{{ user.createdAt ? user.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('app_user_show', {'id': user.id}) }}">show</a>
-                    <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
+                    <a href="{{ path('user_show', {'id': user.id}) }}">Detalle</a>
+                    <a href="{{ path('user_edit', {'id': user.id}) }}">Editar</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">no records found</td>
+                <td colspan="5">No hay usuarios.</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_user_new') }}">Create new</a>
+    <a href="{{ path('user_new') }}">Crear un usuario</a>
 {% endblock %}

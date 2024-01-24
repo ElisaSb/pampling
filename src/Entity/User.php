@@ -1,12 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Entity;
 
-use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @ORM\Entity
  */
 class User
 {
@@ -31,6 +32,11 @@ class User
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
+
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+    }
 
     public function getId(): ?int
     {
@@ -64,12 +70,5 @@ class User
     public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->createdAt;
-    }
-
-    public function setCreatedAt(\DateTimeInterface $createdAt): self
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
     }
 }
